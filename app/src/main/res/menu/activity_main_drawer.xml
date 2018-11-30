@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_principal"
+            android:icon="@drawable/brujula"
+            android:title="@string/principal" />
+        <item
+            android:id="@+id/nav_europa"
+            android:icon="@drawable/europa"
+            android:title="@string/europa" />
+        <item
+            android:id="@+id/nav_america_norte"
+            android:icon="@drawable/mapa"
+            android:title="@string/america_norte" />
+        <item
+            android:id="@+id/nav_america_sur"
+            android:icon="@drawable/americasur"
+            android:title="@string/america_sur" />
+        <item
+            android:id="@+id/nav_asia"
+            android:icon="@drawable/asia"
+            android:title="@string/asia" />
+    </group>
+
+
+
+    <item android:title="@string/comunicacion">
+        <menu>
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/conversar" />
+        </menu>
+    </item>
+
+    <item android:title="@string/guia">
+    <menu>
+        <item
+            android:id="@+id/help"
+            android:title="@string/help" />
+        <item
+            android:id="@+id/information"
+            android:title="@string/informacion"/>
+    </menu>
+</item>
+
+</menu>

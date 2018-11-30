@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">Festivaleo global</string>
+    <string name="name_application">Festivaleo global</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_end_session">Cerrar sesion</string>
+
+    <!-- Strings related to login -->
+    <string name="entrar">Entrar</string>
+    <string name="registrarse">Registrarse</string>
+
+    <string name="prompt_email"> Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- Strings registro -->
+    <string name="nombreRegistro">Nombre de usuario</string>
+    <string name="edad">Edad</string>
+    <string name="correo">Correo</string>
+    <string name="contrasenia">Contrase&#241;a</string>
+    <string name="confirmarContrasenia">Confirmar contrase&#241;a</string>
+    <string name="cancelar">Cancelar</string>
+
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+
+
+    <string name="tab_stream">Stream</string>
+    <string name="tab_messages">Messages</string>
+    <string name="tab_notifications">Notifications</string>
+    <string name="tab_photos">Photos</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_gestor_de_tabs">Festivaleo global</string>
+    <string name="tab_text_general">GENERAL</string>
+    <string name="tab_text_galeria">GALERIA</string>
+    <string name="tab_text_otros">OTROS</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- Strings del navigation drawer -->
+    <string name="principal">Principal</string>
+    <string name="europa">Europa</string>
+    <string name="america_norte">Am&#233;rica del norte</string>
+    <string name="america_sur">Am&#233;rica del sur</string>
+    <string name="asia">Asia</string>
+    <string name="comunicacion">Comunicaci&#243;n</string>
+    <string name="conversar">Conversar</string>
+    <string name="guia">Gu&#237;a para el usuario</string>
+    <string name="help">Help</string>
+    <string name="informacion">Informaci&#243;n</string>
+
+    <!-- Strings de la actividad de otros -->
+    <string name="puntua"><u>Punt&#250;a este festival</u></string>
+    <string name="oficiales">P&#225;ginas oficiales</string>
+    <string name="mapa">Mostrar mapa del lugar</string>
+    <string name="ubicacion">Ubicaci&#243;n</string>
+    <string name="galeria">Galer&#237;a</string>
+    <string name="chateo">Chat</string>
+
+    <!-- Strings fragmento de informacion -->
+    <string name="informacionDe">Informaci&#243;n</string>
+    <string name="acercaDe">Acerca de m&#237;</string>
+    <string name="miNombre">Nombre: Ignacio De La Viuda</string>
+    <string name="dudas">Dudas y preguntas</string>
+    <string name="dudasPreguntas">Escriba aqu&#237; su mensaje</string>
+    <string name="acercaD">Informaci&#243;n</string>
+
+
+    <string name="agradecimientos1">Agradecimientos</string>
+    <string name="agradecimientos2">Agradecimientos a FlatIcon por el uso de los iconos de su p&#225;gina web: <b>www.flaticon.com</b></string>
+
+    <string name="copyright"><i><u>&#169; Copyright: Ignacio De La Viuda</u></i></string>
+
+    <string name="subirimagen">Subir imagen</string>
+
+
+    <string name="quickstart_message">Click the SUBSCRIBE TO WEATHER button below to subscribe to the
+        weather topic. Messages sent to the weather topic will be received. The LOG TOKEN button logs the
+        InstanceID token to logcat.</string>
+    <string name="subscribe_to_weather">Subscribe To Weather</string>
+    <string name="log_token">Log Token</string>
+
+    <string name="msg_subscribed">Subscribed to weather topic</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="default_notification_channel_name" translatable="true">Weather</string>
+    <string name="msg_subscribe_failed">Failed to subscribe to weather topic</string>
+    <string name="fcm_message">FCM Message</string>
+    <string name="menu_login">Log in</string>
+    <string name="menu_logout">Log out</string>
+    <string name="login_label">Log In</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Password</string>
+    <string name="send_text">Send</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec condimentum ante, quis mattis mi. Proin ut rhoncus libero, ac euismod neque. Ut suscipit, enim a facilisis consequat, orci lacus venenatis orci, at ultricies orci nulla sed ex. In condimentum viverra velit, eget feugiat libero imperdiet vel. Aenean pretium, lectus vitae bibendum bibendum, diam turpis convallis eros, quis tristique leo sapien at ipsum. Praesent eu odio id nulla lobortis auctor. Donec eget dolor eget nisl euismod commodo vel a lacus. Quisque ut justo vitae urna pharetra accumsan. Etiam dignissim neque iaculis mauris viverra, blandit rhoncus odio porttitor. Phasellus nibh arcu.</string>
+    <string name="title_sign_in">Welcome</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="hint_password">password</string>
+    <string name="hint_email">email</string>
+    <string name="sign_in">Sign In</string>
+    <string name="heading_recent">Recientes</string>
+    <string name="heading_my_posts">Mis posts</string>
+    <string name="heading_my_top_posts">Top Posts</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="write_your_post">Escribe aqu&#237; …</string>
+    <string name="buscar_imagen">Buscar imagen</string>
+    <string name="titulo_imagen">T&#237;tulo de la imagen</string>
+
+</resources>

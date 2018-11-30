@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "278398095838",
+    "firebase_url": "https://festivaleo-global-ff50d.firebaseio.com",
+    "project_id": "festivaleo-global-ff50d",
+    "storage_bucket": "festivaleo-global-ff50d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278398095838:android:54b5b085873fcc0c",
+        "android_client_info": {
+          "package_name": "com.example.nachodelaviuda.festivaleoglobal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278398095838-8d1bj62b3kvvo4j1thtf4iir61h10fd5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nachodelaviuda.festivaleoglobal",
+            "certificate_hash": "40a91ce36e5d51dfd664daeee97ee902095899a2"
+          }
+        },
+        {
+          "client_id": "278398095838-143j2v7hsqgqmpvpcq5t4toh2gc198o4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeOYvyTWo81sI8IjgTKbMtAbbeLLF_DdI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278398095838-143j2v7hsqgqmpvpcq5t4toh2gc198o4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
