@@ -33,9 +33,9 @@ import com.example.nachodelaviuda.festivaleoglobal.chat.fragment.MyTopPostsFragm
 import com.example.nachodelaviuda.festivaleoglobal.chat.fragment.RecentPostsFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Mainactivity extends BaseActivity {
+public class Mensajeria extends BaseActivity {
 
-    private static final String TAG = "Mainactivity";
+    private static final String TAG = "Mensajeria";
 
     private FragmentPagerAdapter mPagerAdapter;
     private ViewPager mViewPager;
@@ -80,7 +80,7 @@ public class Mainactivity extends BaseActivity {
         findViewById(R.id.fabNewPost).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Mainactivity.this, NewPostActivity.class));
+                startActivity(new Intent(Mensajeria.this, NewPostActivity.class));
             }
         });
     }

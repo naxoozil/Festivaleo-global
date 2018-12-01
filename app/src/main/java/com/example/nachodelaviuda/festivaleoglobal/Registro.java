@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.nachodelaviuda.festivaleoglobal.chat.Mainactivity;
+import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
 import com.example.nachodelaviuda.festivaleoglobal.chat.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -206,8 +206,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         // Write new user
         writeNewUser(user.getUid(), edtNombre.getText().toString(), user.getEmail());
 
-        // Go to Mainactivity
-        startActivity(new Intent(Registro.this, Mainactivity.class));
+        // Go to Mensajeria
+        startActivity(new Intent(Registro.this, Mensajeria.class));
         finish();
     }
 

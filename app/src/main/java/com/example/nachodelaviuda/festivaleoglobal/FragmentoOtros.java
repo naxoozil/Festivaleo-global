@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
-import com.example.nachodelaviuda.festivaleoglobal.chat.Mainactivity;
+import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
 
 public class FragmentoOtros extends Fragment {
 
@@ -49,8 +49,8 @@ public class FragmentoOtros extends Fragment {
         ImageView imgMapa = (ImageView) vista.findViewById(R.id.imagenMapa);
         ImageView imgGaleria = (ImageView) vista.findViewById(R.id.imagenGaleria);
         ImageView imgchat = (ImageView)vista.findViewById(R.id.imagenChat);
-        //Lleva a la activity del maps
 
+        //Lleva a la activity del maps
         imgMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,11 +68,10 @@ public class FragmentoOtros extends Fragment {
         imgchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),Mainactivity.class);
+                Intent intent = new Intent(getContext(),Mensajeria.class);
                 startActivity(intent);
             }
         });
-
 
         return vista;
     }

@@ -16,39 +16,21 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class FragmentoGeneral extends Fragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "descripcion";
-
-
-    private String mParam1;
-    private String mParam2;
-
-    private FirebaseDatabase database;
-    private DatabaseReference myRef;
-
     private OnFragmentInteractionListener mListener;
 
-    public FragmentoGeneral() {
-        // Required empty public constructor
-    }
-
-
-    public static FragmentoGeneral newInstance(String param1, String param2) {
+    public FragmentoGeneral() {} //Es necesario un constructor
+    /*public static FragmentoGeneral newInstance(String param1, String param2) {
         FragmentoGeneral fragment = new FragmentoGeneral();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -63,11 +45,9 @@ public class FragmentoGeneral extends Fragment {
         txt.setText(datos.getString("nombre"));
         txtdesc.setText(datos.getString("descripcion"));
         Glide.with(getContext()).load(datos.getString("img")).into(imagen);
-
         return vista;
     }
-
-
+    
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);

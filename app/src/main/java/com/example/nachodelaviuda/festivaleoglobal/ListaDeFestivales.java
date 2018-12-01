@@ -65,7 +65,6 @@ public class ListaDeFestivales extends AppCompatActivity {
                         Utilidades.nombreUbi = listaElementos.get(recyclerView.getChildAdapterPosition(v)).getNombre();
                         Utilidades.latitud = listaElementos.get(recyclerView.getChildAdapterPosition(v)).getLatitud();
                         Utilidades.longitud = listaElementos.get(recyclerView.getChildAdapterPosition(v)).getLongitud();
-                        Utilidades.pasarAGaleria = listaElementos.get(recyclerView.getChildAdapterPosition(v)).getGaleria();
                         startActivity(intento);
 
 

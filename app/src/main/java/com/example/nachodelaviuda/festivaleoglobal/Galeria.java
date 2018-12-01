@@ -33,14 +33,6 @@ public class Galeria extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galeria);
 
-        actionGaleria = (FloatingActionButton)findViewById(R.id.abrirGaleria);
-        actionGaleria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentAbrirGaleria = new Intent(Galeria.this, RecogerImagenes.class);
-                startActivity(intentAbrirGaleria);
-            }
-        });
 
         imgList = new ArrayList<>();
         lv = (ListView) findViewById(R.id.galeria);
@@ -67,5 +59,22 @@ public class Galeria extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_subir_img, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.subirImagen) {
+            Intent intent = new Intent(Galeria.this, RecogerImagenes.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

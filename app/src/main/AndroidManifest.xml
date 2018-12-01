@@ -48,7 +48,7 @@
 
         <activity android:name=".Galeria" />
 
-        <activity android:name=".chat.Mainactivity"/>
+        <activity android:name=".chat.Mensajeria"/>
 
         <activity android:name=".chat.NewPostActivity" />
 

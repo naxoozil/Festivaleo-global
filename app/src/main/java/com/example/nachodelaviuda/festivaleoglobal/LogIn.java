@@ -11,7 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.nachodelaviuda.festivaleoglobal.chat.Mainactivity;
+import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
 import com.example.nachodelaviuda.festivaleoglobal.chat.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -146,8 +146,8 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
         String username = usernameFromEmail(user.getEmail());
         // Write new user
         writeNewUser(user.getUid(), username, user.getEmail());
-        // Go to Mainactivity
-        startActivity(new Intent(LogIn.this, Mainactivity.class));
+        // Go to Mensajeria
+        startActivity(new Intent(LogIn.this, Mensajeria.class));
         finish();
     }
     private String usernameFromEmail(String email) {

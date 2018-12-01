@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.nachodelaviuda.festivaleoglobal.chat.Mainactivity;
+import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_send:
                 //Toast.makeText(this,"send", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this,Mainactivity.class);
+                Intent intent = new Intent(this,Mensajeria.class);
                 startActivity(intent);
                 break;
             case R.id.help:

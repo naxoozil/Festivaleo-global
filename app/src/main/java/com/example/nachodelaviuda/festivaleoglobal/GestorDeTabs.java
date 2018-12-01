@@ -27,9 +27,6 @@ public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestor_de_tabs);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbaru);
-        //setSupportActionBar(toolbar);
-
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -96,9 +93,6 @@ public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.
                 case 1:
                     fragment = new FragmentoGeneral();
                     break;
-                /*case 2:
-                    fragment = new FragmentoGaleria();
-                    break;*/
                 case 2:
                     fragment = new FragmentoOtros();
                     break;
@@ -115,7 +109,6 @@ public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.
             return rootView;
         }
     }
-
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.

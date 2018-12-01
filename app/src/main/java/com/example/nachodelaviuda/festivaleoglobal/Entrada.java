@@ -19,7 +19,7 @@ public class Entrada extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             // 5 segundos
-            int DURACION = 5000;
+            int DURACION = 3000;
             new Handler().postDelayed(new Runnable(){
                 public void run(){
                     // Cuando pasen los 5 segundos, pasamos a la actividad principal de la aplicación
