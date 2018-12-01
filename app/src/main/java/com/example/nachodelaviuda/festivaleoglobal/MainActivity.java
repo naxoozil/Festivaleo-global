@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intentoAmNor);
                 break;
             case R.id.nav_america_sur:
-                Utilidades.proveniencia = "americasur";
+                Utilidades.proveniencia = "latinoamerica";
                 Intent intentoAmericaSur = new Intent(MainActivity.this, ListaDeFestivales.class);
                 startActivity(intentoAmericaSur);
                 break;

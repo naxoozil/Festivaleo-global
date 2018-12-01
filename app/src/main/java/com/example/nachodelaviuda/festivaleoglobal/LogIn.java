@@ -99,9 +99,6 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             // Sign in success, update UI with the signed-in user's information
-                            String nomUser = mUser.getDisplayName();
-                            Toast toast1 = Toast.makeText(getApplicationContext(), nomUser, Toast.LENGTH_SHORT);
-                            toast1.show();
                             Log.d(TAG, "signInWithEmail:success");
                             onAuthSuccess(task.getResult().getUser());
 
@@ -110,8 +107,6 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LogIn.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-
-
                         }
                     }
                 });
@@ -149,10 +144,8 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
     private void onAuthSuccess(FirebaseUser user) {
         String username = usernameFromEmail(user.getEmail());
-
         // Write new user
         writeNewUser(user.getUid(), username, user.getEmail());
-
         // Go to Mainactivity
         startActivity(new Intent(LogIn.this, Mainactivity.class));
         finish();
