@@ -5,10 +5,60 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Principal"
-        android:textSize="30dp"
-        android:layout_centerInParent="true"/>
+    <Button
+        android:id="@+id/butEuropa"
+        android:layout_width="104dp"
+        android:layout_height="98dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="104dp"
+        android:background="@color/colorAccent"
+        android:text="@string/europa"
+        android:textColor="@color/negro" />
+
+    <Button
+        android:id="@+id/butNorAm"
+        android:layout_width="104dp"
+        android:layout_height="98dp"
+        android:layout_above="@+id/butAsia"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="113dp"
+        android:layout_toEndOf="@+id/butEuropa"
+        android:background="@color/colorAccent"
+        android:text="@string/america_norte"
+        android:textColor="@color/negro" />
+
+    <Button
+        android:id="@+id/butSurAm"
+        android:layout_width="104dp"
+        android:layout_height="98dp"
+        android:layout_below="@+id/butEuropa"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="113dp"
+        android:layout_marginBottom="98dp"
+        android:background="@color/colorAccent"
+        android:text="@string/america_sur"
+        android:textColor="@color/negro" />
+
+    <Button
+        android:id="@+id/butAsia"
+        android:layout_width="104dp"
+        android:layout_height="98dp"
+        android:layout_alignTop="@+id/butSurAm"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="98dp"
+        android:layout_toEndOf="@+id/butSurAm"
+        android:background="@color/colorAccent"
+        android:text="@string/asia"
+        android:textColor="@color/negro" />
 </RelativeLayout>
