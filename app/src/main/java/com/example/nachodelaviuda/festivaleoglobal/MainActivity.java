@@ -15,15 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FragmentoInformacion.OnFragmentInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentoInformacion.OnFragmentInteractionListener {
 
     private DrawerLayout drawer;
     private TextView nombreUsuario, correoUsuario;
     private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,10 +51,9 @@ public class MainActivity extends AppCompatActivity
             //nombreUsuario.setText(Objects.requireNonNull(auth.getCurrentUser()).getDisplayName());
             String str = auth.getCurrentUser().getDisplayName();
             if (Utilidades.toastero) {
-                Toast.makeText(this, "Bienvenido: " + str, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Bienvenid@: " + str, Toast.LENGTH_SHORT).show();
                 Utilidades.toastero = false;
             }
-            //Toast.makeText(this,"Bienvenido: " + str, Toast.LENGTH_SHORT).show();
             nombreUsuario.setText(auth.getCurrentUser().getDisplayName());
             correoUsuario.setText(auth.getCurrentUser().getEmail());
 
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(MainActivity.this, LogIn.class);
             startActivity(intent);
-
+            finish();
 
         }
 
@@ -135,11 +136,8 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_send:
                 //Toast.makeText(this,"send", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this,Mensajeria.class);
+                Intent intent = new Intent(this, Mensajeria.class);
                 startActivity(intent);
-                break;
-            case R.id.help:
-                Toast.makeText(this,"help", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.information:
                 //Toast.makeText(this,"information", Toast.LENGTH_SHORT).show();

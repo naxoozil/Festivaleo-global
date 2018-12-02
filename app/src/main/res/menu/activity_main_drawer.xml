@@ -41,9 +41,6 @@
     <item android:title="@string/guia">
     <menu>
         <item
-            android:id="@+id/help"
-            android:title="@string/help" />
-        <item
             android:id="@+id/information"
             android:title="@string/informacion"/>
     </menu>

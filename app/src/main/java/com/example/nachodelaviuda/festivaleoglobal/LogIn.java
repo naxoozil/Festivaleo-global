@@ -50,7 +50,6 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
         // Buttons
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
         findViewById(R.id.email_register_button).setOnClickListener(this);
-        findViewById(R.id.interneto).setOnClickListener(this);
 
         // [START initialize_auth]
         // Initialize Firebase Auth
