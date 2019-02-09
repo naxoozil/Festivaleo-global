@@ -1,6 +1,8 @@
 package com.example.nachodelaviuda.festivaleoglobal;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ElementoLista {
 
@@ -27,6 +29,18 @@ public class ElementoLista {
         this.galeria        = galeria;
 
     }
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("nombre", nombre);
+        result.put("lugar", lugar);
+        result.put("imagenId", imagenId);
+        result.put("descripcion", descripcion);
+        result.put("latitud", latitud);
+        result.put("longitud", longitud);
+
+        return result;
+    }
+
     public String getNombre() {
         return nombre;
     }

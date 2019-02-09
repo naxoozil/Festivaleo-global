@@ -71,9 +71,9 @@ public class Galeria extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_end_session) {
+        if (id == R.id.subirImagen) {
             FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(Galeria.this, LogIn.class);
+            Intent intent = new Intent(Galeria.this, RecogerImagenes.class);
             startActivity(intent);
             finish();
         }

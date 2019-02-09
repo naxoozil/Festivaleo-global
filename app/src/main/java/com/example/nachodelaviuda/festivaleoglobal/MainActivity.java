@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +18,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
+import com.example.nachodelaviuda.festivaleoglobal.chat.models.Post;
+import com.example.nachodelaviuda.festivaleoglobal.salasaza.Principal;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentoInformacion.OnFragmentInteractionListener {
@@ -97,68 +109,72 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, LogIn.class);
             startActivity(intent);
             finish();
+        }
+        if (id == R.id.action_chat) {
+            Intent intent = new Intent(MainActivity.this, Principal.class);
+            startActivity(intent);
+            finish();
+        }
+
+            return super.onOptionsItemSelected(item);
+
+    }
+        @Override
+        public boolean onNavigationItemSelected (MenuItem item){
+            // Handle navigation view item clicks here.
+            Fragment miFragment = null;
+            boolean fragmentoSeleccionado = false;
+            switch (item.getItemId()) {
+                case R.id.nav_principal:
+                    Utilidades.proveniencia = "principal";
+                    miFragment = new PantallaPrincipal();
+                    fragmentoSeleccionado = true;
+                    break;
+                case R.id.nav_europa:
+                    Utilidades.proveniencia = "europa";
+                    Intent intentoEuropa = new Intent(MainActivity.this, ListaDeFestivales.class);
+                    startActivity(intentoEuropa);
+                    break;
+                case R.id.nav_america_norte:
+                    Utilidades.proveniencia = "norteamerica";
+                    Intent intentoAmNor = new Intent(MainActivity.this, ListaDeFestivales.class);
+                    startActivity(intentoAmNor);
+                    break;
+                case R.id.nav_america_sur:
+                    Utilidades.proveniencia = "latinoamerica";
+                    Intent intentoAmericaSur = new Intent(MainActivity.this, ListaDeFestivales.class);
+                    startActivity(intentoAmericaSur);
+                    break;
+                case R.id.nav_asia:
+                    Utilidades.proveniencia = "asia";
+                    Intent intentoAsia = new Intent(MainActivity.this, ListaDeFestivales.class);
+                    startActivity(intentoAsia);
+                    break;
+                case R.id.nav_send:
+                    //Toast.makeText(this,"send", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(this, Mensajeria.class);
+                    startActivity(intent);
+                    break;
+                case R.id.information:
+                    //Toast.makeText(this,"information", Toast.LENGTH_SHORT).show();
+                    miFragment = new FragmentoInformacion();
+                    fragmentoSeleccionado = true;
+                    break;
+            }
+            if (fragmentoSeleccionado) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, miFragment).commit();
+            }
+
+
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+
 
         }
 
-        return super.onOptionsItemSelected(item);
-    }
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        Fragment miFragment = null;
-        boolean fragmentoSeleccionado = false;
-        switch (item.getItemId()) {
-            case R.id.nav_principal:
-                Utilidades.proveniencia = "principal";
-                miFragment = new PantallaPrincipal();
-                fragmentoSeleccionado = true;
-                break;
-            case R.id.nav_europa:
-                Utilidades.proveniencia = "europa";
-                Intent intentoEuropa = new Intent(MainActivity.this, ListaDeFestivales.class);
-                startActivity(intentoEuropa);
-                break;
-            case R.id.nav_america_norte:
-                Utilidades.proveniencia = "norteamerica";
-                Intent intentoAmNor = new Intent(MainActivity.this, ListaDeFestivales.class);
-                startActivity(intentoAmNor);
-                break;
-            case R.id.nav_america_sur:
-                Utilidades.proveniencia = "latinoamerica";
-                Intent intentoAmericaSur = new Intent(MainActivity.this, ListaDeFestivales.class);
-                startActivity(intentoAmericaSur);
-                break;
-            case R.id.nav_asia:
-                Utilidades.proveniencia = "asia";
-                Intent intentoAsia = new Intent(MainActivity.this, ListaDeFestivales.class);
-                startActivity(intentoAsia);
-                break;
-            case R.id.nav_send:
-                //Toast.makeText(this,"send", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, Mensajeria.class);
-                startActivity(intent);
-                break;
-            case R.id.information:
-                //Toast.makeText(this,"information", Toast.LENGTH_SHORT).show();
-                miFragment = new FragmentoInformacion();
-                fragmentoSeleccionado = true;
-                break;
+        @Override
+        public void onFragmentInteraction (Uri uri){
+
         }
-        if (fragmentoSeleccionado) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, miFragment).commit();
-        }
-
-
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-
-
     }
-
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
-}

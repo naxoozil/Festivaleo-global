@@ -14,6 +14,7 @@ import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
 import com.example.nachodelaviuda.festivaleoglobal.chat.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -81,7 +82,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         // [[COMPROBACIONES]]
         String email = edtNombre.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            edtNombre.setError("Required.");
+            edtNombre.setError("Ingrese un nombre de usuario.");
             continuar = false;
         } else {
             edtNombre.setError(null);
@@ -89,7 +90,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
         String edad = edtEdad.getText().toString();
         if (TextUtils.isEmpty(edad)) {
-            edtEdad.setError("Required.");
+            edtEdad.setError("Ingrese una edad.");
             continuar = false;
         } else {
             edtEdad.setError(null);
@@ -97,18 +98,18 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
         String correo = edtCorreo.getText().toString();
         if (TextUtils.isEmpty(correo)) {
-            edtCorreo.setError("Required.");
+            edtCorreo.setError("Ingrese un correo válido.");
             continuar = false;
         } else {
             edtCorreo.setError(null);
         }
 
-        String contrasenia = edtcontrasenia.getText().toString();
+        String contrasenia = edtcontrasenia.getText().toString().trim();
         if (TextUtils.isEmpty(contrasenia)) {
-            edtcontrasenia.setError("Required.");
+            edtcontrasenia.setError("Ingrese una contraseña.");
             continuar = false;
         } else {
-            if (edtcontrasenia.toString().length() <= 5) {
+            if (contrasenia.length() <= 5) {
                 edtcontrasenia.setError("La contraseña ha de ser mayor de 6 caracteres");
                 continuar = false;
             } else {
@@ -118,12 +119,14 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
         String confirmarContrasenia = edtcontrasenia2.getText().toString();
         if (TextUtils.isEmpty(confirmarContrasenia)) {
-            edtcontrasenia2.setError("Required.");
+            edtcontrasenia2.setError("Ingrese una contraseña.");
             continuar = false;
-        } else if (!confirmarContrasenia.trim().equals(contrasenia.trim())) {
-            edtcontrasenia2.setError("Needs to be the same password");
         } else {
-            edtcontrasenia2.setError(null);
+            if (!confirmarContrasenia.trim().equals(contrasenia.trim())) {
+                edtcontrasenia2.setError("Es necesario que confirme su contraseña");
+            }else {
+                edtcontrasenia2.setError(null);
+            }
         }
         return continuar;
     }
@@ -201,8 +204,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         }
     }
     private void onAuthSuccess(FirebaseUser user) {
-
-
         // Write new user
         writeNewUser(user.getUid(), edtNombre.getText().toString(), user.getEmail());
 

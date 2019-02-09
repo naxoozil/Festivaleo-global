@@ -16,14 +16,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ListaDeFestivales extends AppCompatActivity {
 
     private ArrayList<ElementoLista> listaElementos;
     DatabaseReference reference;
     RecyclerView recyclerView;
-    HashMap<String, String> galerias;
     ListaFestivalesAdaptador adapter;
 
 

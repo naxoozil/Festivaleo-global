@@ -122,5 +122,6 @@
     <string name="write_your_post">Escribe aqu&#237; …</string>
     <string name="buscar_imagen">Buscar imagen</string>
     <string name="titulo_imagen">T&#237;tulo de la imagen</string>
+    <string name="title_activity_lista_de_salas_de_chat">ListaDeSalasDeChat</string>
 
 </resources>

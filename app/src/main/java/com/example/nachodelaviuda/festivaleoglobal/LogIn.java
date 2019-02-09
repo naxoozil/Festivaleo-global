@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "EmailPassword";
+    private static final int W_RETURN = 0;
 
     AutoCompleteTextView campoEmail;
     private EditText campoPassword;
@@ -90,7 +90,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
     // [END on_start_check_user]
 
     private void signIn(String email, String password) {
-        Log.d(TAG, "signIn:" + email);
+        Log.d("signIn:", "signIn:" + email);
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -98,12 +98,12 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
+                            Log.d("signIn:", "signInWithEmail:success");
                             onAuthSuccess(task.getResult().getUser());
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Log.w("signIn:", "signInWithEmail:failure", task.getException());
                             Toast.makeText(LogIn.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
