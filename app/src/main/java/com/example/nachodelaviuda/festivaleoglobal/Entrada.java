@@ -18,7 +18,7 @@ public class Entrada extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
-            // 5 segundos
+            // 3 segundos
             int DURACION = 3000;
             new Handler().postDelayed(new Runnable(){
                 public void run(){
@@ -29,7 +29,7 @@ public class Entrada extends AppCompatActivity {
                 };
             }, DURACION);
         }else{
-            // 3 segundos
+            // 5 segundos
             int DURACION2 = 5000;
             new Handler().postDelayed(new Runnable(){
                 public void run(){

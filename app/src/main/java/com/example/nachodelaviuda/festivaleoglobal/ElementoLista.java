@@ -13,12 +13,12 @@ public class ElementoLista {
     private String descripcion;
     private float latitud;
     private float longitud;
-    private ArrayList galeria;
+    private String correoCreador;
+
 
     public ElementoLista(){
     }
-
-    public ElementoLista(String nombre, String lugar, String imagenId, int rate,String descripcion, float latitud, float longitud,ArrayList galeria) {
+    public ElementoLista(String nombre, String lugar, String imagenId, int rate,String descripcion, float latitud, float longitud,String correoCreador) {
         this.nombre         = nombre;
         this.lugar          = lugar;
         this.imagenId       = imagenId;
@@ -26,7 +26,8 @@ public class ElementoLista {
         this.descripcion    = descripcion;
         this.latitud        = latitud;
         this.longitud       = longitud;
-        this.galeria        = galeria;
+        this.correoCreador  = correoCreador;
+
 
     }
     public Map<String, Object> toMap() {
@@ -37,7 +38,7 @@ public class ElementoLista {
         result.put("descripcion", descripcion);
         result.put("latitud", latitud);
         result.put("longitud", longitud);
-
+        result.put("correoCreador", correoCreador);
         return result;
     }
 
@@ -89,7 +90,7 @@ public class ElementoLista {
 
     public void setLongitud(float longitud) { this.longitud = longitud; }
 
-    public ArrayList getGaleria() { return galeria; }
-
-    public void setGaleria(ArrayList galeria) { this.galeria = galeria; }
+    public String getCorreoCreador() {
+        return correoCreador;
+    }
 }

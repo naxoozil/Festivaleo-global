@@ -28,8 +28,6 @@ import android.view.View;
 
 import com.example.nachodelaviuda.festivaleoglobal.LogIn;
 import com.example.nachodelaviuda.festivaleoglobal.R;
-import com.example.nachodelaviuda.festivaleoglobal.chat.fragment.MyPostsFragment;
-import com.example.nachodelaviuda.festivaleoglobal.chat.fragment.MyTopPostsFragment;
 import com.example.nachodelaviuda.festivaleoglobal.chat.fragment.RecentPostsFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -48,15 +46,12 @@ public class Mensajeria extends BaseActivity {
         // Create the adapter that will return a fragment for each section
         mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             private final Fragment[] mFragments = new Fragment[] {
-                    new RecentPostsFragment(),
-                    new MyPostsFragment(),
-                    new MyTopPostsFragment(),
-            };
+                    new RecentPostsFragment()};
+
             private final String[] mFragmentNames = new String[] {
-                    getString(R.string.heading_recent),
-                    getString(R.string.heading_my_posts),
-                    getString(R.string.heading_my_top_posts)
-            };
+                    getString(R.string.heading_recent)};
+
+
             @Override
             public Fragment getItem(int position) {
                 return mFragments[position];

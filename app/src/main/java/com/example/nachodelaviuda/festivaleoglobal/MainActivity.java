@@ -18,18 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
-import com.example.nachodelaviuda.festivaleoglobal.chat.models.Post;
 import com.example.nachodelaviuda.festivaleoglobal.salasaza.Principal;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentoInformacion.OnFragmentInteractionListener {
@@ -52,7 +42,6 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         auth = FirebaseAuth.getInstance();
-        //String string = nombreAuth.getCurrentUser().getEmail();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         //----------------------------------------------------------------------------------------------------------------------------------------------
@@ -60,7 +49,6 @@ public class MainActivity extends AppCompatActivity
         nombreUsuario = (TextView) hView.findViewById(R.id.nombreDeUsuario);
         correoUsuario = (TextView) hView.findViewById(R.id.correoUsuario);
         try {
-            //nombreUsuario.setText(Objects.requireNonNull(auth.getCurrentUser()).getDisplayName());
             String str = auth.getCurrentUser().getDisplayName();
             if (Utilidades.toastero) {
                 Toast.makeText(this, "Bienvenid@: " + str, Toast.LENGTH_SHORT).show();
@@ -109,6 +97,14 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, LogIn.class);
             startActivity(intent);
             finish();
+            /*Intent emailIntent = new Intent(Intent.ACTION_SEND);
+            // The intent does not have a URI, so declare the "text/plain" MIME type
+            emailIntent.setType("plain/text");
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"jon@example.com"}); // recipients
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Email subject");
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message text");
+            emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment"));
+            startActivity(emailIntent);*/
         }
         if (id == R.id.action_chat) {
             Intent intent = new Intent(MainActivity.this, Principal.class);
@@ -151,12 +147,10 @@ public class MainActivity extends AppCompatActivity
                     startActivity(intentoAsia);
                     break;
                 case R.id.nav_send:
-                    //Toast.makeText(this,"send", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, Mensajeria.class);
                     startActivity(intent);
                     break;
                 case R.id.information:
-                    //Toast.makeText(this,"information", Toast.LENGTH_SHORT).show();
                     miFragment = new FragmentoInformacion();
                     fragmentoSeleccionado = true;
                     break;
@@ -164,15 +158,9 @@ public class MainActivity extends AppCompatActivity
             if (fragmentoSeleccionado) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, miFragment).commit();
             }
-
-
             drawer.closeDrawer(GravityCompat.START);
             return true;
-
-
         }
-
-
         @Override
         public void onFragmentInteraction (Uri uri){
 

@@ -35,7 +35,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     private static final String TAG = "EmailPassword";
 
     private EditText edtNombre;
-    private EditText edtEdad;
     private EditText edtCorreo;
     private EditText edtcontrasenia;
     private EditText edtcontrasenia2;
@@ -52,7 +51,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
         // Declaracion
         edtNombre = findViewById(R.id.editText_register_name);
-        edtEdad = findViewById(R.id.editText_register_edad);
         edtCorreo = findViewById(R.id.editText_register_correo);
         edtcontrasenia = findViewById(R.id.editText_register_password);
         edtcontrasenia2 = findViewById(R.id.editText_register_confirm_password);
@@ -76,24 +74,14 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
     private boolean validarDatos() {
         // Declaracion de variables
-
         boolean continuar = true;
-
         // [[COMPROBACIONES]]
-        String email = edtNombre.getText().toString();
-        if (TextUtils.isEmpty(email)) {
+        String nombre = edtNombre.getText().toString();
+        if (TextUtils.isEmpty(nombre)) {
             edtNombre.setError("Ingrese un nombre de usuario.");
             continuar = false;
         } else {
             edtNombre.setError(null);
-        }
-
-        String edad = edtEdad.getText().toString();
-        if (TextUtils.isEmpty(edad)) {
-            edtEdad.setError("Ingrese una edad.");
-            continuar = false;
-        } else {
-            edtEdad.setError(null);
         }
 
         String correo = edtCorreo.getText().toString();
@@ -168,13 +156,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                             }
                         });
 
+
                     } else {
-                        // If sign in fails, display a message to the user.
-                        //Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                        //Toast.makeText(Activity_register.this, "Authentication failed.",
-                        //       Toast.LENGTH_SHORT).show();
-
-
                         //En el caso de que exista el usuario no se volverá a crear
                         if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                             Toast.makeText(Registro.this, "El usuario ya existe", Toast.LENGTH_LONG).show();

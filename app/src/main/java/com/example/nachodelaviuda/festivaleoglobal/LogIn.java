@@ -43,8 +43,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
         // Views
         campoEmail = (AutoCompleteTextView) findViewById(R.id.email);
-        //String recuperoIntent = getIntent().getStringExtra("pasoDeEmail");
-        //campoEmail.setText(recuperoIntent);
+
         campoPassword = findViewById(R.id.password);
 
         // Buttons
@@ -118,7 +117,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
         String email = campoEmail.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            campoEmail.setError("Required.");
+            campoEmail.setError("Ingrese un correo valido.");
             valid = false;
         } else {
             campoEmail.setError(null);
@@ -126,7 +125,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
         String password = campoPassword.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            campoPassword.setError("Required.");
+            campoPassword.setError("Ingrese una contraseña valida.");
             valid = false;
         } else {
             campoPassword.setError(null);
@@ -145,9 +144,6 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
         String username = usernameFromEmail(user.getEmail());
         // Write new user
         writeNewUser(user.getUid(), username, user.getEmail());
-        // Go to Mensajeria
-        startActivity(new Intent(LogIn.this, Mensajeria.class));
-        finish();
     }
     private String usernameFromEmail(String email) {
         if (email.contains("@")) {

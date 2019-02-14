@@ -1,6 +1,7 @@
 package com.example.nachodelaviuda.festivaleoglobal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -40,7 +42,6 @@ public class ListaFestivalesAdaptador extends RecyclerView.Adapter<ListaFestival
         holder.txtLugar.setText(listaElementos.get(position).getLugar());
         Glide.with(context).load(listaElementos.get(position).getImagenId()).into(holder.foto);
         holder.ratingBar.setRating(listaElementos.get(position).getRate());
-
     }
 
     @Override
@@ -54,7 +55,7 @@ public class ListaFestivalesAdaptador extends RecyclerView.Adapter<ListaFestival
     @Override
     public void onClick(View v) {
         if(listener!=null){
-            listener.onClick(v);
+                listener.onClick(v);
         }
     }
 
@@ -65,10 +66,10 @@ public class ListaFestivalesAdaptador extends RecyclerView.Adapter<ListaFestival
 
         public ElementoViewHolder(View itemView) {
             super(itemView);
-            txtNombre = (TextView) itemView.findViewById(R.id.elementoNombre);
-            txtLugar = (TextView) itemView.findViewById(R.id.elementoLugar);
-            foto = (ImageView) itemView.findViewById(R.id.elementoImagen);
-            ratingBar = (RatingBar) itemView.findViewById(R.id.elementoRating);
+            txtNombre     = (TextView) itemView.findViewById(R.id.elementoNombre);
+            txtLugar      = (TextView) itemView.findViewById(R.id.elementoLugar);
+            foto          = (ImageView) itemView.findViewById(R.id.elementoImagen);
+            ratingBar     = (RatingBar) itemView.findViewById(R.id.elementoRating);
         }
     }
 }

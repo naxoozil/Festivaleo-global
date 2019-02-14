@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 
 import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
+import com.example.nachodelaviuda.festivaleoglobal.salasaza.Principal;
 
 public class FragmentoOtros extends Fragment {
 
@@ -68,7 +69,7 @@ public class FragmentoOtros extends Fragment {
         imgchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(),Mensajeria.class);
+                Intent intent = new Intent(getContext(), Principal.class);
                 startActivity(intent);
             }
         });
