@@ -31,7 +31,6 @@ public class NewPostActivity extends BaseActivity {
     // [END declare_database_ref]
 
     private EditText mTitleField;
-    private EditText mBodyField;
     private FloatingActionButton mSubmitButton;
 
     @Override
@@ -45,7 +44,6 @@ public class NewPostActivity extends BaseActivity {
         // [END initialize_database_ref]
 
         mTitleField = findViewById(R.id.fieldTitle);
-        mBodyField = findViewById(R.id.fieldBody);
         mSubmitButton = findViewById(R.id.fabSubmitPost);
 
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +107,6 @@ public class NewPostActivity extends BaseActivity {
 
     private void setEditingEnabled(boolean enabled) {
         mTitleField.setEnabled(enabled);
-        mBodyField.setEnabled(enabled);
         if (enabled) {
             mSubmitButton.show();
         } else {

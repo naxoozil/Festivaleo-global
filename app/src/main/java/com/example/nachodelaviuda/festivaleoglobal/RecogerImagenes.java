@@ -34,10 +34,6 @@ public class RecogerImagenes extends AppCompatActivity {
     ImageView imageView;
     EditText edtImageName;
     private Uri uri;
-
-
-    public static final String FB_STORAGE_PATH = "image/";
-    public static final String FB_DATABASE_PATH = "image";
     public static final int REQUEST_CODE = 1234;
 
     @Override
@@ -65,7 +61,6 @@ public class RecogerImagenes extends AppCompatActivity {
             final ProgressDialog dialog = new ProgressDialog(this);
             dialog.setTitle("Subiendo imagen...");
             dialog.show();
-
             final StorageReference ref = mStorageRef.child(System.currentTimeMillis() + "." + getImageExt(uri));
             UploadTask uploadTask = ref.putFile(uri);
             Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -74,7 +69,6 @@ public class RecogerImagenes extends AppCompatActivity {
                     if (!task.isSuccessful()) {
                         dialog.dismiss();
                         throw task.getException();
-
                     }
                     // Continue with the task to get the download URL
                     return ref.getDownloadUrl();
@@ -92,13 +86,11 @@ public class RecogerImagenes extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), Galeria.class);
                         dialog.dismiss();
                         finish();
-
                     } else {
 
                     }
                 }
             });
-
         } else {
             Toast.makeText(getApplicationContext(), "Selecciona una imagen", Toast.LENGTH_SHORT).show();
         }

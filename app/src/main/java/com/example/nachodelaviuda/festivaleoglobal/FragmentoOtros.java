@@ -11,9 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
-import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
-import com.example.nachodelaviuda.festivaleoglobal.salasaza.Principal;
-
 public class FragmentoOtros extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";

@@ -68,16 +68,7 @@
                     android:rating="2.5"
                     android:stepSize=".5" />
 
-                <ImageView
-                    android:id="@+id/correocrea"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginBottom="8dp"
-                    android:scaleType="centerInside"
-                    android:visibility="visible"
-                    tools:srcCompat="@android:drawable/ic_menu_delete" />
+
 
             </LinearLayout>
 

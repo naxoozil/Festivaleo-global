@@ -1,5 +1,6 @@
 package com.example.nachodelaviuda.festivaleoglobal;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,9 +9,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
-import com.example.nachodelaviuda.festivaleoglobal.salasaza.Principal;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
@@ -74,9 +74,25 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("¿Salir? ");
+            builder.setMessage("¿Estás seguro de salir?");
+            builder.setCancelable(true);
+            builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
-    }
+        //super.onBackPressed();
+        }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -97,22 +113,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, LogIn.class);
             startActivity(intent);
             finish();
-            /*Intent emailIntent = new Intent(Intent.ACTION_SEND);
-            // The intent does not have a URI, so declare the "text/plain" MIME type
-            emailIntent.setType("plain/text");
-            emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"jon@example.com"}); // recipients
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Email subject");
-            emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message text");
-            emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment"));
-            startActivity(emailIntent);*/
         }
-        if (id == R.id.action_chat) {
-            Intent intent = new Intent(MainActivity.this, Principal.class);
-            startActivity(intent);
-            finish();
-        }
-
-            return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
 
     }
         @Override
@@ -150,6 +152,10 @@ public class MainActivity extends AppCompatActivity
                     Intent intent = new Intent(this, Mensajeria.class);
                     startActivity(intent);
                     break;
+                case R.id.crearFestival:
+                    Intent intent2 = new Intent(this, CrearFestival.class);
+                    startActivity(intent2);
+                    break;
                 case R.id.information:
                     miFragment = new FragmentoInformacion();
                     fragmentoSeleccionado = true;
@@ -165,4 +171,5 @@ public class MainActivity extends AppCompatActivity
         public void onFragmentInteraction (Uri uri){
 
         }
+
     }

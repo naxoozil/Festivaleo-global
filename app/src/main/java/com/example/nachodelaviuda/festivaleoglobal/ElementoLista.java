@@ -35,6 +35,7 @@ public class ElementoLista {
         result.put("nombre", nombre);
         result.put("lugar", lugar);
         result.put("imagenId", imagenId);
+        result.put("rate", rate);
         result.put("descripcion", descripcion);
         result.put("latitud", latitud);
         result.put("longitud", longitud);

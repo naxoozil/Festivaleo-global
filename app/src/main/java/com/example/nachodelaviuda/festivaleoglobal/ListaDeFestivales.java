@@ -6,8 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -26,14 +24,19 @@ public class ListaDeFestivales extends AppCompatActivity {
 
     private ArrayList<ElementoLista> listaElementos;
     DatabaseReference reference;
+    DatabaseReference segundaReference;
     RecyclerView recyclerView;
     ListaFestivalesAdaptador adapter;
-
+    private FirebaseUser usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_lista_festivales);
+
+        usuario = FirebaseAuth.getInstance().getCurrentUser();
+        segundaReference = FirebaseDatabase.getInstance().getReference().getRoot();
+
         listaElementos = new ArrayList<ElementoLista>();
         recyclerView = (RecyclerView) findViewById(R.id.reciclerId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -54,7 +57,9 @@ public class ListaDeFestivales extends AppCompatActivity {
                     ElementoLista p = dataSnapshot1.getValue(ElementoLista.class);
                     listaElementos.add(p);
                 }
-                ImageView pape = (ImageView)findViewById(R.id.correocrea);
+
+                
+
                 adapter = new ListaFestivalesAdaptador(ListaDeFestivales.this, listaElementos);
                 adapter.setOnClickListener(new View.OnClickListener() {
                     @Override

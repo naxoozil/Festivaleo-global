@@ -1,6 +1,7 @@
 package com.example.nachodelaviuda.festivaleoglobal;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,7 +11,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,29 +21,24 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.OnFragmentInteractionListener,FragmentoOtros.OnFragmentInteractionListener{
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
-
+    DatabaseReference reference;
     private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestor_de_tabs);
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        reference = FirebaseDatabase.getInstance().getReference().child(Utilidades.proveniencia).child(Utilidades.nombreUbi);
+        mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-
+        TabLayout tabLayout = findViewById(R.id.tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
@@ -52,13 +47,11 @@ public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         Bundle datos = this.getIntent().getExtras();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String correo = user.getEmail();
-        Log.e("ELEMENTOLISTA y correo ", datos.getString("correoCreador") + "---" + correo);
         if (correo.equals(datos.getString("correoCreador"))){
-            getMenuInflater().inflate(R.menu.pruebas, menu);
+            getMenuInflater().inflate(R.menu.main2, menu);
         }else{
             getMenuInflater().inflate(R.menu.main, menu);
         }
@@ -67,28 +60,17 @@ public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        Bundle datos = this.getIntent().getExtras();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String correo = user.getEmail();
-        if (correo.equals(datos.getString("correoCreador"))){
-            //noinspection SimplifiableIfStatement
-            if (id == R.id.action_end_session) {
-                //Bundle datos = this.getIntent().getExtras();
-                //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                //String correo = user.getEmail();
-                Log.e("ELEMENTOLISTA y correo ", datos.getString("correoCreador") + "---" + correo);
+            if (id == R.id.eliminarfest) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Eliminar Festival");
                 builder.setMessage("¿Estás seguro de eliminar el festival?");
                 builder.setCancelable(true);
                 builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        reference.removeValue();
                         Toast.makeText(getApplicationContext(),
-                                "Aceptar", Toast.LENGTH_SHORT).show();
+                                "Festival eliminado", Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -100,8 +82,12 @@ public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-    }
-
+        if (id == R.id.action_end_session) {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(GestorDeTabs.this, LogIn.class);
+            startActivity(intent);
+            finish();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -109,7 +95,6 @@ public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.
     public void onFragmentInteraction(Uri uri) {
 
     }
-
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -122,7 +107,6 @@ public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.
 
         public PlaceholderFragment() {
         }
-
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -143,7 +127,7 @@ public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_gestor_de_tabs, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            TextView textView = rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }

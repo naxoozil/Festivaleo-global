@@ -18,7 +18,6 @@ package com.example.nachodelaviuda.festivaleoglobal.chat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -28,7 +27,7 @@ import android.view.View;
 
 import com.example.nachodelaviuda.festivaleoglobal.LogIn;
 import com.example.nachodelaviuda.festivaleoglobal.R;
-import com.example.nachodelaviuda.festivaleoglobal.chat.fragment.RecentPostsFragment;
+import com.example.nachodelaviuda.festivaleoglobal.chat.fragment.MensajesSalaDeChat;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Mensajeria extends BaseActivity {
@@ -46,7 +45,7 @@ public class Mensajeria extends BaseActivity {
         // Create the adapter that will return a fragment for each section
         mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             private final Fragment[] mFragments = new Fragment[] {
-                    new RecentPostsFragment()};
+                    new MensajesSalaDeChat()};
 
             private final String[] mFragmentNames = new String[] {
                     getString(R.string.heading_recent)};
@@ -68,8 +67,8 @@ public class Mensajeria extends BaseActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mPagerAdapter);
-        TabLayout tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
+        //TabLayout tabLayout = findViewById(R.id.tabs);
+        //tabLayout.setupWithViewPager(mViewPager);
 
         // Button launches NewPostActivity
         findViewById(R.id.fabNewPost).setOnClickListener(new View.OnClickListener() {

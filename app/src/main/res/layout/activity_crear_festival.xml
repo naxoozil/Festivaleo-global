@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CrearFestival">
+    <ScrollView
+        android:id="@+id/scrollCrear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/linCrear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nombreFestival"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginRight="8dp"
+                android:ems="10"
+                android:hint="Nombre del festival"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="133dp"
+                android:backgroundTint="@color/blanco"/>
+
+            <EditText
+                android:id="@+id/lugarFestival"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Ciudad de celebración del festival"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="212dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+
+            <EditText
+                android:id="@+id/latitudFestival"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Latitud del festival"
+                android:inputType="numberDecimal"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="71dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+            <EditText
+                android:id="@+id/longitudFestival"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:hint="Longitud del festival"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="71dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+            <EditText
+                android:id="@+id/descripcionFestival"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:hint="Descripción del festival"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="71dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/nuevoImageView"/>
+
+            <Button
+                android:id="@+id/buscarImagen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:onClick="btnBuscarImagen"
+                android:text="Buscar imagen"/>
+
+            <Button
+                android:id="@+id/btnSubirFestival"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Subir festival"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

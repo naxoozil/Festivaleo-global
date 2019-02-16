@@ -16,13 +16,22 @@
         android:label="@string/name_application"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".LogIn"></activity>
+        android:theme="@style/AppTheme"
+        android:screenOrientation="portrait">
+
+        <activity
+            android:name=".CrearFestival"
+            android:label="@string/name_application"
+            android:parentActivityName=".MainActivity">>
+        </activity>
+
+        <activity android:name=".LogIn" />
         <activity android:name=".Registro" />
         <activity
             android:name=".MainActivity"
             android:label="@string/name_application"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".GestorDeTabs"
             android:label="@string/title_activity_gestor_de_tabs"
@@ -59,10 +68,7 @@
             android:name=".Maps"
             android:label="@string/name_application" />
         <activity
-            android:name=".salasaza.Principal"
-            android:label="@string/name_application" />
-        <activity
-            android:name=".salasaza.Sala"
+            android:name=".Principal"
             android:label="@string/name_application" />
         <activity android:name=".Entrada">
             <intent-filter>
