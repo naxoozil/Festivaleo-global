@@ -28,7 +28,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class Principal extends AppCompatActivity {
+public class SalasDeChat extends AppCompatActivity {
     DatabaseReference db;
     ArrayList<String> salas;
     EditText editSala;
@@ -59,7 +59,7 @@ public class Principal extends AppCompatActivity {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(Principal.this, "No se encuentra conexión a Internet", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SalasDeChat.this, "No se encuentra conexión a Internet", Toast.LENGTH_SHORT).show();
             }
         });
         listSala.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -68,7 +68,7 @@ public class Principal extends AppCompatActivity {
                 usu = FirebaseAuth.getInstance().getCurrentUser();
                 Utilidades.nombreSala = Utilidades.nombreUbi + ((TextView) view).getText().toString();
                 Log.e("NOMBRESALA",  Utilidades.nombreSala);
-                Intent intent = new Intent(Principal.this, Mensajeria.class);
+                Intent intent = new Intent(SalasDeChat.this, Mensajeria.class);
                 startActivity(intent);
             }
         });

@@ -15,23 +15,21 @@
         android:icon="@drawable/logo"
         android:label="@string/name_application"
         android:roundIcon="@drawable/logo"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:screenOrientation="portrait">
-
+        android:theme="@style/AppTheme">
+        <activity android:name=".PuntuarFestival"></activity>
         <activity
             android:name=".CrearFestival"
             android:label="@string/name_application"
-            android:parentActivityName=".MainActivity">>
-        </activity>
-
+            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".LogIn" />
         <activity android:name=".Registro" />
         <activity
             android:name=".MainActivity"
             android:label="@string/name_application"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".GestorDeTabs"
             android:label="@string/title_activity_gestor_de_tabs"
@@ -50,8 +48,9 @@
                 android:value="com.example.nachodelaviuda.festivaleoglobal.MainActivity" />
         </activity>
         <activity android:name=".Galeria" />
-        <activity android:name=".chat.Mensajeria" />
-        <activity android:name=".chat.NewPostActivity" />
+        <activity android:name=".chat.Mensajeria"
+            android:parentActivityName=".SalasDeChat"/>
+        <activity android:name=".chat.NuevoMensaje" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -68,7 +67,7 @@
             android:name=".Maps"
             android:label="@string/name_application" />
         <activity
-            android:name=".Principal"
+            android:name=".SalasDeChat"
             android:label="@string/name_application" />
         <activity android:name=".Entrada">
             <intent-filter>

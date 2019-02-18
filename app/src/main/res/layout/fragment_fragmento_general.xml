@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FragmentoGeneral"
-    android:background="@color/azulpalo">
+    tools:context=".FragmentoGeneral">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -38,7 +37,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/azulpalo"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="@+id/scrollable">
 

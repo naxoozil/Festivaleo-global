@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentoInformacion"
-    android:background="@color/naranja">
+    tools:context=".FragmentoInformacion">
 
 
     <LinearLayout
@@ -22,42 +21,61 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:textAlignment="center">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="sans-serif-black"
                     android:text="@string/informacionDe"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
                     android:textColorLink="@color/colorPrimaryDark"
                     android:textSize="40sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="sans-serif-black"
                     android:text="@string/acercaDe"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
                     android:textSize="25sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="cursive"
                     android:text="@string/miNombre"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
                     android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="sans-serif-black"
                     android:text="@string/agradecimientos1"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
                     android:textSize="25sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="cursive"
                     android:text="@string/agradecimientos2"
+                    android:textAllCaps="true"
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>

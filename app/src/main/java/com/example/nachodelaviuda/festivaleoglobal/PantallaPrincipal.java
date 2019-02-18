@@ -1,21 +1,18 @@
 
 package com.example.nachodelaviuda.festivaleoglobal;
 
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,13 +40,27 @@ public class PantallaPrincipal extends Fragment {
 
             }
         });
-        usuario = FirebaseAuth.getInstance().getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference().getRoot().child(usuario.getEmail());
+        //usuario = FirebaseAuth.getInstance().getCurrentUser();
+        //final String[] correo = usuario.getEmail().split("@");
+        mDatabase = FirebaseDatabase.getInstance().getReference("Ultimos Festivales Visitados");
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    ElementosPantallaPrincipal pantalla = dataSnapshot1.getValue(ElementosPantallaPrincipal.class);
+                    usuario = FirebaseAuth.getInstance().getCurrentUser();
+                    final String[] correo = usuario.getEmail().split("@");
+                    if (dataSnapshot1.getKey().equals(correo[0])){
+                        //usuario = FirebaseAuth.getInstance().getCurrentUser();
+                        //final String[] correo = usuario.getEmail().split("@");
+                        Log.e("datasnapshot", dataSnapshot.toString());
+                        Log.e("datasnapshot1", dataSnapshot1.toString());
+                        if(dataSnapshot.toString().contains(correo[0]) && dataSnapshot != null ){
+                            ElementosPantallaPrincipal pantalla = dataSnapshot1.getValue(ElementosPantallaPrincipal.class);
+                            nombrePrincipal.setText(pantalla.getNombre());
+                            lugarPrincipal.setText(pantalla.getLugar());
+                            Glide.with(getContext()).load(pantalla.getImagenId()).into(fotoPrincipal);
+                        }
+                    }
 
                 }
             }
@@ -59,49 +70,6 @@ public class PantallaPrincipal extends Fragment {
 
             }
         });
-
-
-
-
-        /*Button butEur = (Button) vista.findViewById(R.id.butEuropa);
-        Button butNor = (Button) vista.findViewById(R.id.butNorAm);
-        Button butSur = (Button) vista.findViewById(R.id.butSurAm);
-        Button butAsia = (Button) vista.findViewById(R.id.butAsia);
-
-        butEur.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Utilidades.proveniencia = "europa";
-                Intent intentoEuropa = new Intent(getContext(), ListaDeFestivales.class);
-                startActivity(intentoEuropa);
-            }
-        });
-        butNor.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Utilidades.proveniencia = "norteamerica";
-                Intent intentoAmNor = new Intent(getContext(), ListaDeFestivales.class);
-                startActivity(intentoAmNor);
-            }
-        });
-        butSur.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Utilidades.proveniencia = "latinoamerica";
-                Intent intentoAmericaSur = new Intent(getContext(), ListaDeFestivales.class);
-                startActivity(intentoAmericaSur);
-            }
-        });
-        butAsia.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Utilidades.proveniencia = "asia";
-                Intent intentoAsia = new Intent(getContext(), ListaDeFestivales.class);
-                startActivity(intentoAsia);
-            }
-        });
-
-*/
         return vista;
 
     }

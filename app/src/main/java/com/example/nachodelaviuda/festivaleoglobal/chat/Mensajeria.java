@@ -70,11 +70,11 @@ public class Mensajeria extends BaseActivity {
         //TabLayout tabLayout = findViewById(R.id.tabs);
         //tabLayout.setupWithViewPager(mViewPager);
 
-        // Button launches NewPostActivity
+        // Button launches NuevoMensaje
         findViewById(R.id.fabNewPost).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Mensajeria.this, NewPostActivity.class));
+                startActivity(new Intent(Mensajeria.this, NuevoMensaje.class));
             }
         });
     }

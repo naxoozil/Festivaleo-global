@@ -35,7 +35,7 @@ public class GestorDeTabs extends AppCompatActivity implements FragmentoGeneral.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestor_de_tabs);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        reference = FirebaseDatabase.getInstance().getReference().child(Utilidades.proveniencia).child(Utilidades.nombreUbi);
+        reference = FirebaseDatabase.getInstance().getReference().child(Utilidades.procedencia).child(Utilidades.nombreUbi);
         mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         TabLayout tabLayout = findViewById(R.id.tabs);

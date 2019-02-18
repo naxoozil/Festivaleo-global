@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.nachodelaviuda.festivaleoglobal.R;
 import com.example.nachodelaviuda.festivaleoglobal.Utilidades;
-import com.example.nachodelaviuda.festivaleoglobal.chat.models.Post;
-import com.example.nachodelaviuda.festivaleoglobal.chat.viewholder.PostViewHolder;
+import com.example.nachodelaviuda.festivaleoglobal.chat.models.Mensaje;
+import com.example.nachodelaviuda.festivaleoglobal.chat.viewholder.HolderMensaje;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,20 +18,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public abstract class PostListFragment extends Fragment {
+public abstract class ListaMensajes extends Fragment {
     // [START define_database_reference]
     private DatabaseReference mDatabase;
     // [END define_database_reference]
-    private FirebaseRecyclerAdapter<Post, PostViewHolder> mAdapter;
+    private FirebaseRecyclerAdapter<Mensaje, HolderMensaje> mAdapter;
     private RecyclerView mRecycler;
     private LinearLayoutManager mManager;
 
-    public PostListFragment() {}
+    public ListaMensajes() {}
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View rootView = inflater.inflate(R.layout.fragment_all_posts, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_lista_mensajes, container, false);
         // [START create_database_reference]
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // [END create_database_reference]
@@ -51,21 +51,21 @@ public abstract class PostListFragment extends Fragment {
         mRecycler.setLayoutManager(mManager);
         Query postsQuery = getQuery(mDatabase);
 
-        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<Post>()
-                .setQuery(postsQuery, Post.class)
+        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<Mensaje>()
+                .setQuery(postsQuery, Mensaje.class)
                 .build();
-        mAdapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(options) {
+        mAdapter = new FirebaseRecyclerAdapter<Mensaje, HolderMensaje>(options) {
             @Override
-            public PostViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+            public HolderMensaje onCreateViewHolder(ViewGroup viewGroup, int i) {
                 LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-                return new PostViewHolder(inflater.inflate(R.layout.item_post, viewGroup, false));
+                return new HolderMensaje(inflater.inflate(R.layout.item_mensaje, viewGroup, false));
             }
             @Override
-            protected void onBindViewHolder(PostViewHolder viewHolder, int position, final Post model) {
+            protected void onBindViewHolder(HolderMensaje viewHolder, int position, final Mensaje model) {
                 final DatabaseReference postRef = getRef(position);
                 // Set click listener for the whole post view
                 final String postKey = postRef.getKey();
-                // Bind Post to ViewHolder, setting OnClickListener for the star button
+                // Bind Mensaje to ViewHolder, setting OnClickListener for the star button
                 viewHolder.bindToPost(model, new View.OnClickListener() {
                     @Override
                     public void onClick(View starView) {

@@ -9,11 +9,15 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -50,7 +54,10 @@ public class CrearFestival extends AppCompatActivity {
     DatabaseReference mDatabaseRef;
     private boolean comprobacion;
     private String enlaceDeImagen;
-
+    private Spinner spinnerContinente;
+    private Spinner spinnerEstrellas;
+    private String elementoSeleccionado;
+    private String elementoSeleccionado2;
     public CrearFestival() {
     }
 
@@ -70,6 +77,39 @@ public class CrearFestival extends AppCompatActivity {
         edtLatitudFestival = (EditText) findViewById(R.id.latitudFestival);
         edtLongitudFestival = (EditText) findViewById(R.id.longitudFestival);
         edtDescripcionFestival = (EditText) findViewById(R.id.descripcionFestival);
+
+        elementoSeleccionado = "";
+        spinnerContinente = (Spinner) findViewById(R.id.spinnerContinente);
+        String[] letra = {"Europa","NorteAmerica","Latinoamerica","Asia"};
+        spinnerContinente.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, letra));
+        spinnerContinente.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id)
+            {
+                elementoSeleccionado = adapterView.getItemAtPosition(pos).toString().toLowerCase();
+                Log.e(elementoSeleccionado,elementoSeleccionado);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {    }
+        });
+
+        elementoSeleccionado2 = "";
+        spinnerEstrellas = (Spinner) findViewById(R.id.spinnerEstrellas);
+        String[] letra2 = {"1","2","3","4","5"};
+        spinnerEstrellas.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, letra2));
+        spinnerEstrellas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id)
+            {
+                elementoSeleccionado2 = adapterView.getItemAtPosition(pos).toString();
+                Log.e(elementoSeleccionado2,elementoSeleccionado2);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {    }
+        });
         imagenFestival = (ImageView) findViewById(R.id.nuevoImageView);
         buscarImagen = (Button) findViewById(R.id.buscarImagen);
         subirFestival = (Button) findViewById(R.id.btnSubirFestival);
@@ -100,18 +140,16 @@ public class CrearFestival extends AppCompatActivity {
     private void subirNuevoFestival() {
         ElementoLista festival = new ElementoLista(edtNombreFestival.getText().toString(),
                 edtLugarFestival.getText().toString(),enlaceDeImagen,
-                5, edtDescripcionFestival.getText().toString(),
+                Integer.parseInt(elementoSeleccionado2), edtDescripcionFestival.getText().toString(),
                 Integer.parseInt(edtLatitudFestival.getText().toString()),
                 Integer.parseInt(edtLongitudFestival.getText().toString()),
                 usuario.getEmail());
         Map<String, Object> postValues = festival.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("europa" + "/" + "/" + edtNombreFestival.getText().toString() + "/", postValues);
+        childUpdates.put(elementoSeleccionado + "/" + "/" + edtNombreFestival.getText().toString() + "/", postValues);
 
         mDatabase.updateChildren(childUpdates);
     }
-
-
 
     public void btnBuscarImagen(View view) {
         Intent intent = new Intent();

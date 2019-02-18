@@ -10,14 +10,14 @@
 
     <include
         android:id="@+id/postAuthorLayout"
-        layout="@layout/include_post_author"
+        layout="@layout/include_autor_mensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true" />
 
     <include
         android:id="@+id/postTextLayout"
-        layout="@layout/include_post_text"
+        layout="@layout/include_texto_mensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

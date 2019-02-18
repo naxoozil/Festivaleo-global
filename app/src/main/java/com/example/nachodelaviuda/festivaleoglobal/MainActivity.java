@@ -18,15 +18,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentoInformacion.OnFragmentInteractionListener {
 
     private DrawerLayout drawer;
     private TextView nombreUsuario, correoUsuario;
-    private FirebaseAuth auth;
+    private FirebaseUser usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +41,21 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        auth = FirebaseAuth.getInstance();
-
+        usuario = FirebaseAuth.getInstance().getCurrentUser();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         //----------------------------------------------------------------------------------------------------------------------------------------------
         View hView = navigationView.getHeaderView(0);
         nombreUsuario = (TextView) hView.findViewById(R.id.nombreDeUsuario);
         correoUsuario = (TextView) hView.findViewById(R.id.correoUsuario);
         try {
-            String str = auth.getCurrentUser().getDisplayName();
-            if (Utilidades.toastero) {
+            String str = usuario.getDisplayName();
+            if (Utilidades.verif) {
                 Toast.makeText(this, "Bienvenid@: " + str, Toast.LENGTH_SHORT).show();
-                Utilidades.toastero = false;
+                Utilidades.verif = false;
             }
-            nombreUsuario.setText(auth.getCurrentUser().getDisplayName());
-            correoUsuario.setText(auth.getCurrentUser().getEmail());
+
+            nombreUsuario.setText(usuario.getDisplayName());
+            correoUsuario.setText(usuario.getEmail());
 
         } catch (NullPointerException e) {
         }
@@ -124,33 +124,29 @@ public class MainActivity extends AppCompatActivity
             boolean fragmentoSeleccionado = false;
             switch (item.getItemId()) {
                 case R.id.nav_principal:
-                    Utilidades.proveniencia = "principal";
+                    Utilidades.procedencia = "principal";
                     miFragment = new PantallaPrincipal();
                     fragmentoSeleccionado = true;
                     break;
                 case R.id.nav_europa:
-                    Utilidades.proveniencia = "europa";
+                    Utilidades.procedencia = "europa";
                     Intent intentoEuropa = new Intent(MainActivity.this, ListaDeFestivales.class);
                     startActivity(intentoEuropa);
                     break;
                 case R.id.nav_america_norte:
-                    Utilidades.proveniencia = "norteamerica";
+                    Utilidades.procedencia = "norteamerica";
                     Intent intentoAmNor = new Intent(MainActivity.this, ListaDeFestivales.class);
                     startActivity(intentoAmNor);
                     break;
                 case R.id.nav_america_sur:
-                    Utilidades.proveniencia = "latinoamerica";
+                    Utilidades.procedencia = "latinoamerica";
                     Intent intentoAmericaSur = new Intent(MainActivity.this, ListaDeFestivales.class);
                     startActivity(intentoAmericaSur);
                     break;
                 case R.id.nav_asia:
-                    Utilidades.proveniencia = "asia";
+                    Utilidades.procedencia = "asia";
                     Intent intentoAsia = new Intent(MainActivity.this, ListaDeFestivales.class);
                     startActivity(intentoAsia);
-                    break;
-                case R.id.nav_send:
-                    Intent intent = new Intent(this, Mensajeria.class);
-                    startActivity(intent);
                     break;
                 case R.id.crearFestival:
                     Intent intent2 = new Intent(this, CrearFestival.class);

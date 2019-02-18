@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -52,7 +51,7 @@ public class RecogerImagenes extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select image"), REQUEST_CODE);
+        startActivityForResult(Intent.createChooser(intent, "Selecciona una imagen"), REQUEST_CODE);
     }
 
     public void btnUpload_click(View view) {

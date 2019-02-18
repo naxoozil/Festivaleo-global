@@ -63,12 +63,11 @@
     <string name="informacion">Informaci&#243;n</string>
 
     <!-- Strings de la actividad de otros -->
-    <string name="puntua"><u>Punt&#250;ame</u></string>
-    <string name="oficiales">P&#225;ginas oficiales</string>
+    <string name="puntua"><u>Puntuar festival</u></string>
     <string name="mapa">Mostrar mapa del lugar</string>
-    <string name="ubicacion">Ubicaci&#243;n</string>
-    <string name="galeria">Galer&#237;a</string>
-    <string name="chateo">Chat</string>
+    <string name="ubicacion"><u>Ubicaci&#243;n</u></string>
+    <string name="galeria"><u>Galer&#237;a</u></string>
+    <string name="chateo"><u>Chat</u></string>
 
     <!-- Strings fragmento de informacion -->
     <string name="informacionDe">Informaci&#243;n</string>

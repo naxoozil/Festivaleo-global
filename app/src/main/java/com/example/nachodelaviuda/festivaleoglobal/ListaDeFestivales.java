@@ -2,12 +2,12 @@ package com.example.nachodelaviuda.festivaleoglobal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ListaDeFestivales extends AppCompatActivity {
 
@@ -48,7 +50,7 @@ public class ListaDeFestivales extends AppCompatActivity {
         listaElementos.add(elementoLista);
         adapter = new ListaFestivalesAdaptador(ListaDeFestivales.this, listaElementos);
 
-        reference = FirebaseDatabase.getInstance().getReference().child(Utilidades.proveniencia);
+        reference = FirebaseDatabase.getInstance().getReference().child(Utilidades.procedencia);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -58,7 +60,7 @@ public class ListaDeFestivales extends AppCompatActivity {
                     listaElementos.add(p);
                 }
 
-                
+
 
                 adapter = new ListaFestivalesAdaptador(ListaDeFestivales.this, listaElementos);
                 adapter.setOnClickListener(new View.OnClickListener() {
@@ -70,9 +72,17 @@ public class ListaDeFestivales extends AppCompatActivity {
                         intento.putExtra("img", listaElementos.get(recyclerView.getChildAdapterPosition(v)).getImagenId());
                         intento.putExtra("descripcion", listaElementos.get(recyclerView.getChildAdapterPosition(v)).getDescripcion());
                         intento.putExtra("correoCreador", listaElementos.get(recyclerView.getChildAdapterPosition(v)).getCorreoCreador());
+                        intento.putExtra("puntuacion", listaElementos.get(recyclerView.getChildAdapterPosition(v)).getRate());
                         Utilidades.nombreUbi = listaElementos.get(recyclerView.getChildAdapterPosition(v)).getNombre();
                         Utilidades.latitud = listaElementos.get(recyclerView.getChildAdapterPosition(v)).getLatitud();
                         Utilidades.longitud = listaElementos.get(recyclerView.getChildAdapterPosition(v)).getLongitud();
+
+                        subirInformacion(listaElementos.get(recyclerView.getChildAdapterPosition(v)).getNombre(),
+                                         listaElementos.get(recyclerView.getChildAdapterPosition(v)).getLugar(),
+                                         listaElementos.get(recyclerView.getChildAdapterPosition(v)).getImagenId(),
+                                         Utilidades.procedencia);
+                        new Handler().postDelayed(new Runnable(){public void run(){}}, 1000);
+
                         startActivity(intento);
                     }
                 });
@@ -85,5 +95,14 @@ public class ListaDeFestivales extends AppCompatActivity {
         });
 
 
+    }
+    private void subirInformacion(String nombre, String lugar, String imagen, String procedencia) {
+        ElementosPantallaPrincipal pantalla = new ElementosPantallaPrincipal(nombre, lugar, imagen, procedencia);
+        Map<String, Object> postValues = pantalla.toMap();
+        Map<String, Object> childUpdates = new HashMap<>();
+        String[] correo = usuario.getEmail().split("@");
+        segundaReference.child("Ultimos Festivales Visitados").child(correo[0]).setValue(postValues);
+        //childUpdates.put(usuario.getEmail() + "/", postValues);
+        //segundaReference.updateChildren(childUpdates);
     }
 }

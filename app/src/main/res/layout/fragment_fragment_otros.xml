@@ -9,39 +9,38 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/azul_claro"
         android:orientation="vertical">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
         <TextView
+            android:id="@+id/puntuar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_weight="3"
             android:elevation="8dp"
             android:gravity="center"
             android:text="@string/puntua"
             android:textColor="@color/blanco"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:typeface="serif" />
 
-        <RatingBar
-            android:id="@+id/otroRating"
-            style="@style/Widget.AppCompat.RatingBar.Indicator"
+        <ImageView
+            android:id="@+id/imagenEstrella"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:clickable="true"
-            android:elevation="0dp"
-            android:filterTouchesWhenObscured="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:longClickable="true"
-            android:numStars="5"
-            android:rating="2"
-            android:stepSize="1" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/puntua"
+            android:elevation="8dp"
+            android:src="@android:drawable/star_big_off" />
+    </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -55,6 +54,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/ubi"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -78,7 +78,10 @@
 
 
         </LinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="25dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,6 +89,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/gal"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -109,7 +113,10 @@
 
 
         </LinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="25dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -117,6 +124,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/chat"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"

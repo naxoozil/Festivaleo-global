@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".Principal">
+    tools:context=".SalasDeChat">
 
     <EditText
         android:id="@+id/editSala"
@@ -17,13 +17,14 @@
 
     <Button
         android:id="@+id/botSala"
-        android:layout_width="60dp"
+        android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="11dp"
         android:onClick="insert_data"
-        tools:ignore="OnClick" />
+        tools:ignore="OnClick"
+        android:text="Crear sala"/>
 
     <ListView
         android:id="@+id/listSala"

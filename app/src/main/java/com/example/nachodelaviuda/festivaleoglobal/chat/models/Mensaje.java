@@ -8,17 +8,17 @@ import java.util.Map;
 
 // [START post_class]
 @IgnoreExtraProperties
-public class Post {
+public class Mensaje {
 
     public String uid;
     public String author;
     public String title;
 
-    public Post() {
-        // Default constructor required for calls to DataSnapshot.getValue(Post.class)
+    public Mensaje() {
+        // Default constructor required for calls to DataSnapshot.getValue(Mensaje.class)
     }
 
-    public Post(String uid, String author, String title) {
+    public Mensaje(String uid, String author, String title) {
         this.uid = uid;
         this.author = author;
         this.title = title;

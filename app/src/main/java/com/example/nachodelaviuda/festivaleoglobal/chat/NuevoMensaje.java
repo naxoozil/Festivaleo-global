@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import com.example.nachodelaviuda.festivaleoglobal.R;
 import com.example.nachodelaviuda.festivaleoglobal.Utilidades;
-import com.example.nachodelaviuda.festivaleoglobal.chat.models.Post;
-import com.example.nachodelaviuda.festivaleoglobal.chat.models.User;
+import com.example.nachodelaviuda.festivaleoglobal.chat.models.Mensaje;
+import com.example.nachodelaviuda.festivaleoglobal.chat.models.Usuario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,9 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NewPostActivity extends BaseActivity {
+public class NuevoMensaje extends BaseActivity {
 
-    private static final String TAG = "NewPostActivity";
+    private static final String TAG = "NuevoMensaje";
     private static final String REQUIRED = "Required";
 
     // [START declare_database_ref]
@@ -73,19 +73,19 @@ public class NewPostActivity extends BaseActivity {
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        // Get user value
-                        User user = dataSnapshot.getValue(User.class);
+                        // Get usuario value
+                        Usuario usuario = dataSnapshot.getValue(Usuario.class);
 
                         // [START_EXCLUDE]
-                        if (user == null) {
-                            // User is null, error out
+                        if (usuario == null) {
+                            // Usuario is null, error out
                             Log.e(TAG, "Error " + userId + " is unexpectedly null");
-                            Toast.makeText(NewPostActivity.this,
+                            Toast.makeText(NuevoMensaje.this,
                                     "Error con el usuario",
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             // Write new post
-                            writeNewPost(userId, user.username, title);
+                            writeNewPost(userId, usuario.username, title);
                         }
 
                         // Finish this Activity, back to the stream
@@ -116,11 +116,11 @@ public class NewPostActivity extends BaseActivity {
 
     // [START write_fan_out]
     private void writeNewPost(String userId, String username, String title) {
-        // Create new post at /user-posts/$userid/$postid and at
+        // Create new mensaje at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = mDatabase.child(Utilidades.nombreSala+"/"+"sala1"+"/"+"posts").push().getKey();
-        Post post = new Post(userId, username, title);
-        Map<String, Object> postValues = post.toMap();
+        Mensaje mensaje = new Mensaje(userId, username, title);
+        Map<String, Object> postValues = mensaje.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put(Utilidades.nombreSala+"/"+"/posts/" + key, postValues);

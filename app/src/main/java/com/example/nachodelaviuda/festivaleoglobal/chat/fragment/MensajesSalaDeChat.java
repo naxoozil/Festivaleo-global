@@ -4,7 +4,7 @@ import com.example.nachodelaviuda.festivaleoglobal.Utilidades;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
 
-public class MensajesSalaDeChat extends PostListFragment {
+public class MensajesSalaDeChat extends ListaMensajes {
 
     public MensajesSalaDeChat() {}
 

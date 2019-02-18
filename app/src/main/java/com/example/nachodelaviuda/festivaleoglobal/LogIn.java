@@ -11,8 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.nachodelaviuda.festivaleoglobal.chat.Mensajeria;
-import com.example.nachodelaviuda.festivaleoglobal.chat.models.User;
+import com.example.nachodelaviuda.festivaleoglobal.chat.models.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -135,9 +134,9 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
+        Usuario usuario = new Usuario(name, email);
 
-        mDatabase.child("users").child(userId).setValue(user);
+        mDatabase.child("users").child(userId).setValue(usuario);
     }
 
     private void onAuthSuccess(FirebaseUser user) {
