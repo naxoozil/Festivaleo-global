@@ -18,11 +18,11 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PuntuarFestival"></activity>
+        <activity android:name=".PuntuarFestival" />
         <activity
             android:name=".CrearFestival"
             android:label="@string/name_application"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".LogIn" />
         <activity android:name=".Registro" />
         <activity
@@ -48,8 +48,9 @@
                 android:value="com.example.nachodelaviuda.festivaleoglobal.MainActivity" />
         </activity>
         <activity android:name=".Galeria" />
-        <activity android:name=".chat.Mensajeria"
-            android:parentActivityName=".SalasDeChat"/>
+        <activity
+            android:name=".chat.Mensajeria"
+            android:parentActivityName=".SalasDeChat" />
         <activity android:name=".chat.NuevoMensaje" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

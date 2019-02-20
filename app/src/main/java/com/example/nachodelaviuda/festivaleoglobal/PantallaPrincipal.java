@@ -1,7 +1,9 @@
 
 package com.example.nachodelaviuda.festivaleoglobal;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -43,7 +45,7 @@ public class PantallaPrincipal extends Fragment {
         //usuario = FirebaseAuth.getInstance().getCurrentUser();
         //final String[] correo = usuario.getEmail().split("@");
         mDatabase = FirebaseDatabase.getInstance().getReference("Ultimos Festivales Visitados");
-        mDatabase.addValueEventListener(new ValueEventListener() {
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
@@ -52,8 +54,10 @@ public class PantallaPrincipal extends Fragment {
                     if (dataSnapshot1.getKey().equals(correo[0])){
                         //usuario = FirebaseAuth.getInstance().getCurrentUser();
                         //final String[] correo = usuario.getEmail().split("@");
-                        Log.e("datasnapshot", dataSnapshot.toString());
-                        Log.e("datasnapshot1", dataSnapshot1.toString());
+                        new Handler().postDelayed(new Runnable(){
+                            public void run(){
+                            };
+                        }, 1000);
                         if(dataSnapshot.toString().contains(correo[0]) && dataSnapshot != null ){
                             ElementosPantallaPrincipal pantalla = dataSnapshot1.getValue(ElementosPantallaPrincipal.class);
                             nombrePrincipal.setText(pantalla.getNombre());

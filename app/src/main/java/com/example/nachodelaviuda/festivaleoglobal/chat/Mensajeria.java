@@ -71,7 +71,7 @@ public class Mensajeria extends BaseActivity {
         //tabLayout.setupWithViewPager(mViewPager);
 
         // Button launches NuevoMensaje
-        findViewById(R.id.fabNewPost).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.fabNuevoMensaje).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Mensajeria.this, NuevoMensaje.class));
@@ -92,10 +92,10 @@ public class Mensajeria extends BaseActivity {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(this, LogIn.class));
             finish();
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
+
         }
+
+        return true;
     }
 
 }

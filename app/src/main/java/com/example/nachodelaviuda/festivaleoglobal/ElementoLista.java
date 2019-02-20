@@ -9,7 +9,7 @@ public class ElementoLista {
     private String nombre;
     private String lugar;
     private String imagenId;
-    private int rate;
+    private float rate;
     private String descripcion;
     private float latitud;
     private float longitud;
@@ -18,7 +18,7 @@ public class ElementoLista {
 
     public ElementoLista(){
     }
-    public ElementoLista(String nombre, String lugar, String imagenId, int rate,String descripcion, float latitud, float longitud,String correoCreador) {
+    public ElementoLista(String nombre, String lugar, String imagenId, float rate,String descripcion, float latitud, float longitud,String correoCreador) {
         this.nombre         = nombre;
         this.lugar          = lugar;
         this.imagenId       = imagenId;
@@ -67,11 +67,11 @@ public class ElementoLista {
         this.imagenId = imagenId;
     }
 
-    public int getRate() {
+    public float getRate() {
         return rate;
     }
 
-    public void setRate(int rate) {
+    public void setRate(float rate) {
         this.rate = rate;
     }
 

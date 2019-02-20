@@ -36,7 +36,7 @@ public class NuevoMensaje extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_post);
+        setContentView(R.layout.activity_nuevo_mensaje);
 
         // [START initialize_database_ref]
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -44,7 +44,7 @@ public class NuevoMensaje extends BaseActivity {
         // [END initialize_database_ref]
 
         mTitleField = findViewById(R.id.fieldTitle);
-        mSubmitButton = findViewById(R.id.fabSubmitPost);
+        mSubmitButton = findViewById(R.id.subirMsg);
 
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override

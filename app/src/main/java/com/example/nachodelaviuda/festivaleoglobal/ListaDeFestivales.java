@@ -59,9 +59,6 @@ public class ListaDeFestivales extends AppCompatActivity {
                     ElementoLista p = dataSnapshot1.getValue(ElementoLista.class);
                     listaElementos.add(p);
                 }
-
-
-
                 adapter = new ListaFestivalesAdaptador(ListaDeFestivales.this, listaElementos);
                 adapter.setOnClickListener(new View.OnClickListener() {
                     @Override
