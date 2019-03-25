@@ -84,7 +84,9 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         }
 
         String correo = edtCorreo.getText().toString();
-        if (TextUtils.isEmpty(correo)) {
+        String[] correo2 = correo.split("@");
+        if (TextUtils.isEmpty(correo)&& TextUtils.isEmpty(correo2[0])&& TextUtils.isEmpty(correo2[1])||correo2 == null) {
+            Log.e("parte1",correo2[0]);
             edtCorreo.setError("Ingrese un correo válido.");
             continuar = false;
         } else {
@@ -111,6 +113,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         } else {
             if (!confirmarContrasenia.trim().equals(contrasenia.trim())) {
                 edtcontrasenia2.setError("Es necesario que confirme su contraseña");
+                continuar = false;
             }else {
                 edtcontrasenia2.setError(null);
             }

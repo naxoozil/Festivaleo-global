@@ -2,6 +2,7 @@ package com.example.nachodelaviuda.festivaleoglobal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -158,6 +159,8 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
             if (validateForm()) {
                 signIn(campoEmail.getText().toString(), campoPassword.getText().toString());
                 Intent intent = new Intent(this, MainActivity.class);
+                new Handler().postDelayed(new Runnable(){
+                    public void run(){ };}, 1500);
                 startActivity(intent);
                 finish();
             }

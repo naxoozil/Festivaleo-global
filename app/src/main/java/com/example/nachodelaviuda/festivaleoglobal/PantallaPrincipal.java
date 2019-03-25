@@ -49,6 +49,10 @@ public class PantallaPrincipal extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    new Handler().postDelayed(new Runnable(){
+                        public void run(){
+                        };
+                    }, 3000);
                     usuario = FirebaseAuth.getInstance().getCurrentUser();
                     final String[] correo = usuario.getEmail().split("@");
                     if (dataSnapshot1.getKey().equals(correo[0])){
